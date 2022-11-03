@@ -1,6 +1,7 @@
 import {useState} from "react";
 import {Formulario} from "./Formulario";
 import {Imagen} from "./Imagen";
+import {MostrarAlerta} from "./MostrarAlerta";
 
 export const Pixabay = () => {
     const registrosPorPagina = 30;
@@ -15,7 +16,7 @@ export const Pixabay = () => {
     }
 
     const consultarAPI = async (pagina) => {
-        if (buscarImagen) {
+        if (buscarImagen){
             const key = '27831392-ee0593f708bc31745e094e459';
             const url = `https://pixabay.com/api/?key=${key}&q=${busqueda}&per_page=${registrosPorPagina}&page=${paginaActual}`;
 
@@ -37,7 +38,7 @@ export const Pixabay = () => {
 
     const crearPaginacion = () => {
         const paginas = [];
-        for (let i = 1; i <= totalPaginas; i++) {
+        for(let i = 1; i <= totalPaginas; i++) {
             paginas.push(i);
         }
         return paginas;
@@ -50,7 +51,7 @@ export const Pixabay = () => {
             <a
                 className={`siguiente bg-yellow-400 px-4 py-1 mr-2 font-bold mb-10 rounded ${paginaActual === pagina ? 'bg-red-400' : ''}`}
                 data-pagina={pagina.toString()}
-                onClick={() => {
+                onClick= { () => {
                     consultarAPI(pagina);
                 }}
                 href={`pagina#${pagina}`}
@@ -67,27 +68,33 @@ export const Pixabay = () => {
                 setBuscarImagen={setBuscarImagen}
                 buscar={buscar}
             />
-            <div className='"container mx-auto mt-10 flex flex-wrap'>
-                {
-                    imagenes.map(imagen => (
-
-                        <Imagen
-                            imagen={imagen}
-                            key={imagen.id}
-                            busqueda={busqueda}
-                        />
-                    ))
-                }
-            </div>
             {
-                imagenes.length > 0 && (
-                    <div className='paginacion container mx-auto mb-10 text-center'>
+                buscarImagen && (
+                    <>
+                        <div className='"container mx-auto mt-10 flex flex-wrap'>
+                            {
+                                imagenes.map(imagen => (
+
+                                    <Imagen
+                                        imagen={imagen}
+                                        key={imagen.id}
+                                        busqueda={busqueda}
+                                    />
+                                ))
+                            }
+                        </div>
                         {
-                            imprimirPaginacion()
+                            imagenes.length >0 && (
+                                <div className='paginacion container mx-auto mb-10 text-center'>
+                                    {
+                                        imprimirPaginacion()
+                                    }
+                                </div>
+                            )
                         }
-                    </div>
+                    </>
+
                 )
-            }
             }
         </>
     );
