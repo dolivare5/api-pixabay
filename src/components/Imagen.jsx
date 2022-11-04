@@ -1,6 +1,6 @@
-export const Imagen = ({ imagen, busqueda, key }) => {
+export const Imagen = ({ imagen, busqueda }) => {
     return (
-        <div className='w-1/2 md:w-1/3 lg:w-1/4 p-3 mb-4'>
+        <>
             <div className='bg-white'>
                 <img className="w-full max-h-72" src={imagen.previewURL} alt={`Imagen relacionada con ${busqueda}`} />
                 <div className='p-4'>
@@ -14,6 +14,6 @@ export const Imagen = ({ imagen, busqueda, key }) => {
                     >Ver Imagen</a>
                 </div>
             </div>
-        </div>
+        </>
     );
 }

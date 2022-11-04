@@ -55,6 +55,8 @@ export const Pixabay = () => {
                     consultarAPI(pagina);
                 }}
                 href={`pagina#${pagina}`}
+                id={`pagina${pagina}`}
+                key={pagina}
             >{pagina}</a>
         ))
     }
@@ -71,23 +73,28 @@ export const Pixabay = () => {
             {
                 buscarImagen ? (
                     <>
-                        <div className='"container mx-auto mt-10 flex flex-wrap'>
+                        <div className='container mx-auto mt-10 flex flex-wrap'>
                             {
-                                imagenes.map(imagen => (
+                                imagenes.map((imagen, index) => (
 
-                                    <Imagen
-                                        imagen={imagen}
-                                        key={imagen.id}
-                                        busqueda={busqueda}
-                                    />
+                                    <div className='w-1/2 md:w-1/3 lg:w-1/4 p-3 mb-4' key={index}>
+                                        <Imagen
+                                            imagen={imagen}
+                                            busqueda={busqueda}
+                                        />
+                                    </div>
                                 ))
                             }
                         </div>
-                        <div className='paginacion container mx-auto mb-10 text-center'>
-                            {
-                                imprimirPaginacion()
-                            }
-                        </div>
+                        {
+                            totalPaginas > 1 && (
+                                <div className='paginacion container mx-auto mb-10 text-center'>
+                                    {
+                                        imprimirPaginacion()
+                                    }
+                                </div>
+                            )
+                        }
                     </>
 
                 ) : (

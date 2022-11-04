@@ -3,7 +3,6 @@ export const Formulario = ({busqueda, setBusqueda, setBuscarImagen, buscar }) =>
     const validarFormulario = (e) => {
         e.preventDefault();
         buscarImagen = busqueda.trim() === '' ? buscarImagen = false : buscarImagen = true;
-        console.log('buscarImagen', buscarImagen);
         setBuscarImagen(buscarImagen);
         buscar(e);
 
