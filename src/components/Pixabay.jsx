@@ -47,14 +47,13 @@ export const Pixabay = () => {
     const imprimirPaginacion = () => {
         const paginas = crearPaginacion();
         // Para colucarle un dataset a un elemento de react se usa el atributo data- y el nombre del atributo
-        return paginas.map((pagina) => (
+        return paginas.map((pagina, index) => (
             <a
                 className={`siguiente bg-yellow-400 px-4 py-1 mr-2 font-bold mb-10 rounded ${paginaActual === pagina ? 'bg-red-400' : ''}`}
                 data-pagina={pagina.toString()}
                 onClick= { () => {
                     consultarAPI(pagina);
                 }}
-                href={`pagina#${pagina}`}
                 id={`pagina${pagina}`}
                 key={pagina}
             >{pagina}</a>
