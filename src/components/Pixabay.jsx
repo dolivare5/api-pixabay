@@ -69,7 +69,7 @@ export const Pixabay = () => {
                 buscar={buscar}
             />
             {
-                buscarImagen && (
+                buscarImagen ? (
                     <>
                         <div className='"container mx-auto mt-10 flex flex-wrap'>
                             {
@@ -90,6 +90,8 @@ export const Pixabay = () => {
                         </div>
                     </>
 
+                ) : (
+                    <MostrarAlerta alerta={'Agrega un término de búsqueda'}/>
                 )
             }
         </>
