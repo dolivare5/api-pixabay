@@ -83,15 +83,11 @@ export const Pixabay = () => {
                                 ))
                             }
                         </div>
-                        {
-                            imagenes.length >0 && (
-                                <div className='paginacion container mx-auto mb-10 text-center'>
-                                    {
-                                        imprimirPaginacion()
-                                    }
-                                </div>
-                            )
-                        }
+                        <div className='paginacion container mx-auto mb-10 text-center'>
+                            {
+                                imprimirPaginacion()
+                            }
+                        </div>
                     </>
 
                 )
